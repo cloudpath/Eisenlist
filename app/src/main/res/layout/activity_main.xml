@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:padding="10dp"
-tools:context="com.josuemartinez.simpleapp.MainActivity">
-
-<ImageView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="centerCrop"
-    android:src="@drawable/office" />
+    android:padding="10dp"
+    tools:context="com.josuemartinez.simpleapp.MainActivity">
 
-<TextView
-    android:id="@+id/office"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="The Office"
-    android:textSize="36sp"
-    android:fontFamily="sans-serif-light"
-    android:textColor="@android:color/white"
-    android:padding="20dp"
-    />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="TODO" android:contentDescription="TODO" android:scaleType="centerCrop"
+        android:src="@drawable/office" />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentBottom="true"
-    android:text="of Mobile Apps"
-    android:textSize="36sp"
-    android:fontFamily="sans-serif-light"
-    android:textColor="@android:color/white"
-    android:padding="20dp"
-    />
+    <TextView
+        android:id="@+id/office"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:padding="20dp"
+        android:text="The Office"
+        android:textColor="@android:color/white"
+        android:textSize="36sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="sans-serif-light"
+        android:padding="20dp"
+        android:text="of Mobile Apps"
+        android:textColor="@android:color/white"
+        android:textSize="36sp" />
 
 </RelativeLayout>
