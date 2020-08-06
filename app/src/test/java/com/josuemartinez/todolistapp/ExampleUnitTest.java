@@ -1,4 +1,4 @@
-package com.josuemartinez.simpleapp;
+package com.josuemartinez.todolistapp;
 
 import org.junit.Test;
 

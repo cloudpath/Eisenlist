@@ -1,4 +1,4 @@
-package com.josuemartinez.simpleapp;
+package com.josuemartinez.todolistapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
