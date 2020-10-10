@@ -2,9 +2,12 @@
 package com.josuemartinez.todolistapp;
 
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -71,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                         int position = viewHolder.getAdapterPosition();
                         List<TaskEntry> tasks = mAdapter.getTasks();
                         mDb.taskDao().deleteTask(tasks.get(position));
-                        retrieveTasks();
                     }
                 });
             }
@@ -94,25 +96,15 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         });
 
         mDb = AppDatabase.getInstance(getApplicationContext());
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         retrieveTasks();
     }
 
     private void retrieveTasks() {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        final LiveData<List<TaskEntry>> tasks = mDb.taskDao().loadAllTasks();
+        tasks.observe(this, new Observer<List<TaskEntry>>() {
             @Override
-            public void run() {
-                final List<TaskEntry> tasks = mDb.taskDao().loadAllTasks();
-                   runOnUiThread(new Runnable() {
-                       @Override
-                       public void run() {
-                           mAdapter.setTasks(tasks);
-                       }
-                   });
+            public void onChanged(@Nullable List<TaskEntry> taskEntries) {
+                mAdapter.setTasks(taskEntries);
             }
         });
     }
