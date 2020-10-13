@@ -2,8 +2,8 @@
 package com.josuemartinez.todolistapp;
 
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,6 @@ import android.widget.RadioGroup;
 
 import com.josuemartinez.todolistapp.database.AppDatabase;
 import com.josuemartinez.todolistapp.database.TaskEntry;
-import com.josuemartinez.todolistapp.database.TaskDao;
 
 import java.util.Date;
 
@@ -32,8 +31,6 @@ public class AddTaskActivity extends AppCompatActivity {
     public static final int PRIORITY_LOW = 3;
     // Constant for default task id to be used when not in update mode
     private static final int DEFAULT_TASK_ID = -1;
-    // Constant for logging
-    private static final String TAG = AddTaskActivity.class.getSimpleName();
     // Fields for views
     EditText mEditText;
     RadioGroup mRadioGroup;
@@ -61,11 +58,14 @@ public class AddTaskActivity extends AppCompatActivity {
             if (mTaskId == DEFAULT_TASK_ID) {
                 // populate the UI
                 mTaskId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
-                final LiveData<TaskEntry> task = mDb.taskDao().loadTaskById(mTaskId);
-                task.observe(this, new Observer<TaskEntry>() {
+
+                AddTasksViewModelFactory factory = new AddTasksViewModelFactory(mDb, mTaskId);
+                final AddTasksViewModel viewModel
+                        = ViewModelProviders.of(this,factory).get(AddTasksViewModel.class);
+                viewModel.getTask().observe(this, new Observer<TaskEntry>() {
                     @Override
                     public void onChanged(@Nullable TaskEntry taskEntry) {
-                        task.removeObserver(this);
+                        viewModel.getTask.removeObserver(this);
                         populateUI(taskEntry);
                     }
                 });

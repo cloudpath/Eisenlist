@@ -2,8 +2,8 @@
 package com.josuemartinez.todolistapp;
 
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,14 +22,11 @@ import com.josuemartinez.todolistapp.database.TaskEntry;
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static com.josuemartinez.todolistapp.R.id.recyclerViewTasks;
 
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
 
-    // Constant for logging
-    private static final String TAG = MainActivity.class.getSimpleName();
-    // Member variables for the adapter and RecyclerView
-    private RecyclerView mRecyclerView;
     private TaskAdapter mAdapter;
 
     private AppDatabase mDb;
@@ -40,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         setContentView(R.layout.activity_main);
 
         // Set the RecyclerView to its corresponding view
-        mRecyclerView = findViewById(R.id.recyclerViewTasks);
+        // Member variables for the adapter and RecyclerView
+        RecyclerView mRecyclerView = findViewById(recyclerViewTasks);
 
         // Set the layout for the RecyclerView to be a linear layout, which measures and
         // positions items within a RecyclerView into a linear list
@@ -96,12 +94,12 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         });
 
         mDb = AppDatabase.getInstance(getApplicationContext());
-        retrieveTasks();
+        setupViewModel();
     }
 
-    private void retrieveTasks() {
-        final LiveData<List<TaskEntry>> tasks = mDb.taskDao().loadAllTasks();
-        tasks.observe(this, new Observer<List<TaskEntry>>() {
+    private void setupViewModel() {
+        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        viewModel.getTasks().observe(this, new Observer<List<TaskEntry>>() {
             @Override
             public void onChanged(@Nullable List<TaskEntry> taskEntries) {
                 mAdapter.setTasks(taskEntries);
