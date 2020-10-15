@@ -26,9 +26,10 @@ public class AddTaskActivity extends AppCompatActivity {
     // Extra for the task ID to be received after rotation
     public static final String INSTANCE_TASK_ID = "instanceTaskId";
     // Constants for priority
-    public static final int PRIORITY_HIGH = 1;
-    public static final int PRIORITY_MEDIUM = 2;
-    public static final int PRIORITY_LOW = 3;
+    public static final int PRIORITY_ONE = 1;
+    public static final int PRIORITY_TWO = 2;
+    public static final int PRIORITY_THREE = 3;
+    public static final int PRIORITY_FOUR = 4;
     // Constant for default task id to be used when not in update mode
     private static final int DEFAULT_TASK_ID = -1;
     // Fields for views
@@ -142,13 +143,16 @@ public class AddTaskActivity extends AppCompatActivity {
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup)).getCheckedRadioButtonId();
         switch (checkedId) {
             case R.id.radButton1:
-                priority = PRIORITY_HIGH;
+                priority = PRIORITY_ONE;
                 break;
             case R.id.radButton2:
-                priority = PRIORITY_MEDIUM;
+                priority = PRIORITY_TWO;
                 break;
             case R.id.radButton3:
-                priority = PRIORITY_LOW;
+                priority = PRIORITY_THREE;
+                break;
+            case R.id.radButton4:
+                priority = PRIORITY_FOUR;
         }
         return priority;
     }
@@ -160,14 +164,17 @@ public class AddTaskActivity extends AppCompatActivity {
      */
     public void setPriorityInViews(int priority) {
         switch (priority) {
-            case PRIORITY_HIGH:
+            case PRIORITY_ONE:
                 ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton1);
                 break;
-            case PRIORITY_MEDIUM:
+            case PRIORITY_TWO:
                 ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton2);
                 break;
-            case PRIORITY_LOW:
+            case PRIORITY_THREE:
                 ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton3);
+                break;
+            case PRIORITY_FOUR:
+                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton4);
         }
     }
 }
