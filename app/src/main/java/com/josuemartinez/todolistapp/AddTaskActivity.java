@@ -61,12 +61,11 @@ public class AddTaskActivity extends AppCompatActivity {
                 mTaskId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
 
                 AddTasksViewModelFactory factory = new AddTasksViewModelFactory(mDb, mTaskId);
-                final AddTasksViewModel viewModel
-                        = ViewModelProviders.of(this,factory).get(AddTasksViewModel.class);
+                final AddTasksViewModel viewModel =
+                        ViewModelProviders.of(this,factory).get(AddTasksViewModel.class);
                 viewModel.getTask().observe(this, new Observer<TaskEntry>() {
                     @Override
                     public void onChanged(@Nullable TaskEntry taskEntry) {
-                        viewModel.getTask.removeObserver(this);
                         populateUI(taskEntry);
                     }
                 });
