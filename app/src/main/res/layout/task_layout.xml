@@ -43,7 +43,6 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/priority_circle"
         android:gravity="center"
