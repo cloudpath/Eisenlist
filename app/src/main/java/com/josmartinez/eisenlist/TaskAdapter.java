@@ -1,5 +1,5 @@
 
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.josuemartinez.todolistapp.database.TaskEntry;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 import java.text.SimpleDateFormat;
 import java.util.List;

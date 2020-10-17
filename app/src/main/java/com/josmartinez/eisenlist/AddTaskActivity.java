@@ -1,5 +1,5 @@
 
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 
 import android.arch.lifecycle.Observer;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import com.josuemartinez.todolistapp.database.AppDatabase;
-import com.josuemartinez.todolistapp.database.TaskEntry;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 import java.util.Date;
 

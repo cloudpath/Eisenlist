@@ -1,4 +1,4 @@
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 import org.junit.Test;
 

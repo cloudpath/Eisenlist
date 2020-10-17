@@ -1,5 +1,5 @@
 
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 
 import android.arch.lifecycle.Observer;
@@ -16,13 +16,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import com.josuemartinez.todolistapp.database.AppDatabase;
-import com.josuemartinez.todolistapp.database.TaskEntry;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
-import static com.josuemartinez.todolistapp.R.id.recyclerViewTasks;
+import static com.josmartinez.eisenlist.R.id.recyclerViewTasks;
 
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {

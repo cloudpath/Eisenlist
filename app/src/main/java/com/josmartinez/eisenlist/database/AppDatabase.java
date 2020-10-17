@@ -1,4 +1,4 @@
-package com.josuemartinez.todolistapp.database;
+package com.josmartinez.eisenlist.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

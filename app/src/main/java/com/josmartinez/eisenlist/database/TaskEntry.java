@@ -1,5 +1,5 @@
 
-package com.josuemartinez.todolistapp.database;
+package com.josmartinez.eisenlist.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

@@ -1,10 +1,10 @@
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.josuemartinez.todolistapp.database.AppDatabase;
-import com.josuemartinez.todolistapp.database.TaskEntry;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 public class AddTasksViewModel extends ViewModel {
 

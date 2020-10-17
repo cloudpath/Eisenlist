@@ -1,10 +1,10 @@
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.josuemartinez.todolistapp.database.AppDatabase;
+import com.josmartinez.eisenlist.database.AppDatabase;
 
 public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 

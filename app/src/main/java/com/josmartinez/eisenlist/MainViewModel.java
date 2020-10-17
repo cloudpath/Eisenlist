@@ -1,4 +1,4 @@
-package com.josuemartinez.todolistapp;
+package com.josmartinez.eisenlist;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -6,8 +6,8 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.josuemartinez.todolistapp.database.AppDatabase;
-import com.josuemartinez.todolistapp.database.TaskEntry;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 import java.util.List;
 
