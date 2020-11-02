@@ -8,8 +8,7 @@ import com.josmartinez.eisenlist.database.TaskEntry;
 
 public class AddTasksViewModel extends ViewModel {
 
-    public LiveData<TaskEntry> getTask;
-    private LiveData<TaskEntry> task;
+    private final LiveData<TaskEntry> task;
     public LiveData<TaskEntry> getTask(){ return task;}
 
     public AddTasksViewModel(AppDatabase database, int taskId) {

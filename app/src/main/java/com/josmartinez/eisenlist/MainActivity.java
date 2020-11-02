@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         // Member variables for the adapter and RecyclerView
         RecyclerView mRecyclerView = findViewById(recyclerViewTasks);
 
-        // Set the layout for the RecyclerView to be a linear layout, which measures and
-        // positions items within a RecyclerView into a linear list
+        // Set the layout for the RecyclerView to be a linear layout
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the adapter and attach it to the RecyclerView

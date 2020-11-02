@@ -16,6 +16,7 @@ public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFacto
         mTaskId = taskId;
     }
 
+    @NonNull
     @SuppressWarnings("unchecked")
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass){

@@ -14,7 +14,7 @@ import java.util.List;
 public class MainViewModel extends AndroidViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
-    private LiveData<List<TaskEntry>> tasks;
+    private final LiveData<List<TaskEntry>> tasks;
 
     public MainViewModel(@NonNull Application application) {
         super(application);

@@ -30,9 +30,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     final private ItemClickListener mItemClickListener;
     // Class variables for the List that holds task data and the Context
     private List<TaskEntry> mTaskEntries;
-    private Context mContext;
+    private final Context mContext;
     // Date formatter
-    private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     /**
      * Constructor for the TaskAdapter that initializes the Context.
@@ -90,7 +90,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     /*
     Helper method for selecting the correct priority circle color.
-    P1 = red, P2 = orange, P3 = yellow
+    T1 = red, T2 = orange, T3 = yellow, T4 = gray.
     */
     private int getPriorityColor(int priority) {
         int priorityColor = 0;

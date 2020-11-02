@@ -2,6 +2,7 @@
 package com.josmartinez.eisenlist;
 
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -57,7 +58,7 @@ public class AddTaskActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra(EXTRA_TASK_ID)) {
             mButton.setText(R.string.update_button);
             if (mTaskId == DEFAULT_TASK_ID) {
-                // populate the UI
+
                 mTaskId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
 
                 AddTasksViewModelFactory factory = new AddTasksViewModelFactory(mDb, mTaskId);
@@ -137,6 +138,7 @@ public class AddTaskActivity extends AppCompatActivity {
     /**
      * getPriority is called whenever the selected priority needs to be retrieved
      */
+    @SuppressLint("NonConstantResourceId")
     public int getPriorityFromViews() {
         int priority = 1;
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup)).getCheckedRadioButtonId();
