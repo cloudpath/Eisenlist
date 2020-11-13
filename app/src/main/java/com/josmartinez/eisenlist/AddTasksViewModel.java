@@ -31,10 +31,13 @@ import com.josmartinez.eisenlist.database.TaskEntry;
 public class AddTasksViewModel extends ViewModel {
 
     private final LiveData<TaskEntry> task;
-    public LiveData<TaskEntry> getTask(){ return task;}
 
     public AddTasksViewModel(AppDatabase database, int taskId) {
         task = database.taskDao().loadTaskById(taskId);
+    }
+
+    public LiveData<TaskEntry> getTask() {
+        return task;
     }
 
 

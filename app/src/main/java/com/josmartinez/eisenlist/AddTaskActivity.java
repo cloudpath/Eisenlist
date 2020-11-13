@@ -117,7 +117,7 @@ public class AddTaskActivity extends AppCompatActivity {
      * @param task the taskEntry to populate the UI
      */
     private void populateUI(TaskEntry task) {
-        if (task == null){
+        if (task == null) {
             return;
         }
         mEditText.setText(task.getDescription());
@@ -138,9 +138,9 @@ public class AddTaskActivity extends AppCompatActivity {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
-                if (mTaskId == DEFAULT_TASK_ID){
+                if (mTaskId == DEFAULT_TASK_ID) {
                     mDb.taskDao().insertTask(taskEntry);
-                }else {
+                } else {
                     taskEntry.setId(mTaskId);
                     mDb.taskDao().updateTask(taskEntry);
                 }

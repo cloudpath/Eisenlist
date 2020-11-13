@@ -23,7 +23,6 @@
 package com.josmartinez.eisenlist;
 
 import android.app.Application;
-
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -47,7 +46,7 @@ public class MainViewModel extends AndroidViewModel {
         tasks = database.taskDao().loadAllTasks();
     }
 
-    public LiveData<List<TaskEntry>> getTasks(){
+    public LiveData<List<TaskEntry>> getTasks() {
         return tasks;
     }
 }

@@ -32,7 +32,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {TaskEntry.class}, version=1, exportSchema = false)
+@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -41,9 +41,9 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "todolist";
     private static AppDatabase sInstance;
 
-    public static AppDatabase getInstance(Context context){
+    public static AppDatabase getInstance(Context context) {
         if (sInstance == null) {
-            synchronized (LOCK){
+            synchronized (LOCK) {
                 Log.d(LOG_TAG, "New database instance");
                 sInstance = Room.databaseBuilder(
                         context.getApplicationContext(),

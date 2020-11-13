@@ -37,7 +37,7 @@ public class AppExecutors {
     private final Executor networkIO;
 
 
-    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread){
+    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
         this.diskIO = diskIO;
         this.networkIO = networkIO;
         this.mainThread = mainThread;
@@ -59,9 +59,13 @@ public class AppExecutors {
     }
 
 
-    public Executor mainThread() { return mainThread; }
+    public Executor mainThread() {
+        return mainThread;
+    }
 
-    public Executor networkIO() { return networkIO; }
+    public Executor networkIO() {
+        return networkIO;
+    }
 
     private static class MainThreadExecutor implements Executor {
         private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());

@@ -42,7 +42,7 @@ public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFacto
     @NonNull
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends ViewModel> T create(@NonNull Class<T> modelClass){
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new AddTasksViewModel(mDb, mTaskId);
     }
 }
