@@ -23,7 +23,6 @@
 package com.josmartinez.eisenlist;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -36,13 +35,11 @@ import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private static final String TAG = MainViewModel.class.getSimpleName();
     private final LiveData<List<TaskEntry>> tasks;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
         AppDatabase database = AppDatabase.getInstance(this.getApplication());
-        Log.d(TAG, "Actively retrieving tasks from the Database");
         tasks = database.taskDao().loadAllTasks();
     }
 

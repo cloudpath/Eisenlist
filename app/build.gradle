@@ -10,6 +10,17 @@ android {
         versionName "20.11"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+    bundle {
+        density {
+            enableSplit true
+        }
+        abi {
+            enableSplit true
+        }
+        language {
+            enableSplit false
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

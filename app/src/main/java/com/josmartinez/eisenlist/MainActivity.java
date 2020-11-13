@@ -44,7 +44,6 @@ import static com.josmartinez.eisenlist.R.id.recyclerViewTasks;
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
 
     private TaskAdapter mAdapter;
-
     private AppDatabase mDb;
 
     @Override
