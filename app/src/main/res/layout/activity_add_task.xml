@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:gravity="start"
         android:hint="@string/edit_task_description"
-        android:paddingBottom="@dimen/activity_horizontal_margin" />
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:autofillHints="First Task" />
 
     <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
     <TextView

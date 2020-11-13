@@ -22,8 +22,8 @@
  */
 package com.josmartinez.eisenlist;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.josmartinez.eisenlist.database.AppDatabase;
 import com.josmartinez.eisenlist.database.TaskEntry;

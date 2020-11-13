@@ -4,7 +4,7 @@
     <color name="colorPrimary">#08A9A7</color>
     <color name="colorPrimaryDark">#03918F</color>
     <color name="colorPrimaryLight">#CFE9C5</color>
-    <color name="colorAccent">#03918F</color>
+    <color name="colorAccent">#12b891</color>
 
     <!-- colors taskEntrytask priority selection -->
     <color name="materialRed">#E74C3C</color>
