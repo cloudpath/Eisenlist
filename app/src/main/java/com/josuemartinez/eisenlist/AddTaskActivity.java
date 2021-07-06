@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.josmartinez.eisenlist;
+package com.josuemartinez.eisenlist;
 
 
 import android.annotation.SuppressLint;
@@ -30,8 +30,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.josmartinez.eisenlist.database.AppDatabase;
-import com.josmartinez.eisenlist.database.TaskEntry;
+import com.josuemartinez.eisenlist.database.AppDatabase;
+import com.josuemartinez.eisenlist.database.TaskEntry;
 
 import java.util.Date;
 

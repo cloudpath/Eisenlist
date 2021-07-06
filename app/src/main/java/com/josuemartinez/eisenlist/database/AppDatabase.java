@@ -20,30 +20,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josmartinez.eisenlist;
 
-import android.app.Application;
+package com.josuemartinez.eisenlist.database;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
-import com.josmartinez.eisenlist.database.AppDatabase;
-import com.josmartinez.eisenlist.database.TaskEntry;
+import android.content.Context;
 
-import java.util.List;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
-public class MainViewModel extends AndroidViewModel {
+@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
+@TypeConverters(DateConverter.class)
+public abstract class AppDatabase extends RoomDatabase {
 
-    private final LiveData<List<TaskEntry>> tasks;
+    private static final Object LOCK = new Object();
+    private static final String DATABASE_NAME = "todolist";
+    private static AppDatabase sInstance;
 
-    public MainViewModel(@NonNull Application application) {
-        super(application);
-        AppDatabase database = AppDatabase.getInstance(this.getApplication());
-        tasks = database.taskDao().loadAllTasks();
+    public static AppDatabase getInstance(Context context) {
+        if (sInstance == null) {
+            synchronized (LOCK) {
+                sInstance = Room.databaseBuilder(
+                        context.getApplicationContext(),
+                        AppDatabase.class,
+                        AppDatabase.DATABASE_NAME)
+                        .build();
+            }
+        }
+        return sInstance;
     }
 
-    public LiveData<List<TaskEntry>> getTasks() {
-        return tasks;
-    }
+    public abstract TaskDao taskDao();
 }

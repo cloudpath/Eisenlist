@@ -20,37 +20,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.josuemartinez.eisenlist;
 
-package com.josmartinez.eisenlist.database;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
+import com.josuemartinez.eisenlist.database.AppDatabase;
 
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
+public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
-@TypeConverters(DateConverter.class)
-public abstract class AppDatabase extends RoomDatabase {
+    private final AppDatabase mDb;
+    private final int mTaskId;
 
-    private static final Object LOCK = new Object();
-    private static final String DATABASE_NAME = "todolist";
-    private static AppDatabase sInstance;
-
-    public static AppDatabase getInstance(Context context) {
-        if (sInstance == null) {
-            synchronized (LOCK) {
-                sInstance = Room.databaseBuilder(
-                        context.getApplicationContext(),
-                        AppDatabase.class,
-                        AppDatabase.DATABASE_NAME)
-                        .build();
-            }
-        }
-        return sInstance;
+    public AddTasksViewModelFactory(AppDatabase database, int taskId) {
+        mDb = database;
+        mTaskId = taskId;
     }
 
-    public abstract TaskDao taskDao();
+    @NonNull
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+        return (T) new AddTasksViewModel(mDb, mTaskId);
+    }
 }

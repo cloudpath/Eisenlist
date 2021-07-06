@@ -20,23 +20,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.josuemartinez.eisenlist;
 
-package com.josmartinez.eisenlist.database;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
-import androidx.room.TypeConverter;
+import com.josuemartinez.eisenlist.database.AppDatabase;
+import com.josuemartinez.eisenlist.database.TaskEntry;
 
-import java.util.Date;
+import java.util.List;
 
-public class DateConverter {
+public class MainViewModel extends AndroidViewModel {
 
-    @TypeConverter
-    public static Date toDate(Long timestamp) {
-        return timestamp == null ? null : new Date(timestamp);
+    private final LiveData<List<TaskEntry>> tasks;
+
+    public MainViewModel(@NonNull Application application) {
+        super(application);
+        AppDatabase database = AppDatabase.getInstance(this.getApplication());
+        tasks = database.taskDao().loadAllTasks();
     }
 
-    @TypeConverter
-    public static Long toTimestamp(Date date) {
-        return date == null ? null : date.getTime();
+    public LiveData<List<TaskEntry>> getTasks() {
+        return tasks;
     }
 }

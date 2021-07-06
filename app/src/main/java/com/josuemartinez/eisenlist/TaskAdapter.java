@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.josmartinez.eisenlist;
+package com.josuemartinez.eisenlist;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
@@ -27,7 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.josmartinez.eisenlist.database.TaskEntry;
+import com.josuemartinez.eisenlist.database.TaskEntry;
 
 import java.text.SimpleDateFormat;
 import java.util.List;

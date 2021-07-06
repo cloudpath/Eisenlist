@@ -20,29 +20,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josmartinez.eisenlist;
+
+package com.josuemartinez.eisenlist.database;
 
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.room.TypeConverter;
 
-import com.josmartinez.eisenlist.database.AppDatabase;
+import java.util.Date;
 
-public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class DateConverter {
 
-    private final AppDatabase mDb;
-    private final int mTaskId;
-
-    public AddTasksViewModelFactory(AppDatabase database, int taskId) {
-        mDb = database;
-        mTaskId = taskId;
+    @TypeConverter
+    public static Date toDate(Long timestamp) {
+        return timestamp == null ? null : new Date(timestamp);
     }
 
-    @NonNull
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new AddTasksViewModel(mDb, mTaskId);
+    @TypeConverter
+    public static Long toTimestamp(Date date) {
+        return date == null ? null : date.getTime();
     }
 }
