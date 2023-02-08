@@ -20,37 +20,59 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.josuemartinez.onemorelist;
 
-package com.josuemartinez.eisenlist.database;
+import android.os.Handler;
+import android.os.Looper;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
-import android.content.Context;
-
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
-
-@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
-@TypeConverters(DateConverter.class)
-public abstract class AppDatabase extends RoomDatabase {
+public class AppExecutors {
 
     private static final Object LOCK = new Object();
-    private static final String DATABASE_NAME = "todolist";
-    private static AppDatabase sInstance;
+    private static AppExecutors sInstance;
+    private final Executor diskIO;
+    private final Executor mainThread;
+    private final Executor networkIO;
 
-    public static AppDatabase getInstance(Context context) {
+
+    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+        this.diskIO = diskIO;
+        this.networkIO = networkIO;
+        this.mainThread = mainThread;
+    }
+
+    public static AppExecutors getInstance() {
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = Room.databaseBuilder(
-                        context.getApplicationContext(),
-                        AppDatabase.class,
-                        AppDatabase.DATABASE_NAME)
-                        .build();
+                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
+                        Executors.newFixedThreadPool(3),
+                        new MainThreadExecutor());
             }
         }
         return sInstance;
     }
 
-    public abstract TaskDao taskDao();
+    public Executor diskIO() {
+        return diskIO;
+    }
+
+
+    public Executor mainThread() {
+        return mainThread;
+    }
+
+    public Executor networkIO() {
+        return networkIO;
+    }
+
+    private static class MainThreadExecutor implements Executor {
+        private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
+
+        @Override
+        public void execute(Runnable command) {
+            mainThreadHandler.post(command);
+        }
+    }
 }

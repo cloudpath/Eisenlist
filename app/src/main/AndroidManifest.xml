@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.josuemartinez.eisenlist">
+    package="com.josuemartinez.onemorelist">
 
     <application
         android:allowBackup="false"
@@ -12,7 +12,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <!-- The manifest entry for the MainActivity -->
-        <activity android:name="com.josuemartinez.eisenlist.MainActivity">
+        <activity android:name="com.josuemartinez.onemorelist.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
 
         <!-- AddTaskActivity -->
         <activity
-            android:name="com.josuemartinez.eisenlist.AddTaskActivity"
+            android:name="com.josuemartinez.onemorelist.AddTaskActivity"
             android:label="@string/add_task_activity_name" />
 
     </application>

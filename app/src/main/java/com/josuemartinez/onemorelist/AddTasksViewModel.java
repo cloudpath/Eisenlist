@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josuemartinez.eisenlist;
+package com.josuemartinez.onemorelist;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.josuemartinez.eisenlist.database.AppDatabase;
-import com.josuemartinez.eisenlist.database.TaskEntry;
+import com.josuemartinez.onemorelist.database.AppDatabase;
+import com.josuemartinez.onemorelist.database.TaskEntry;
 
 public class AddTasksViewModel extends ViewModel {
 

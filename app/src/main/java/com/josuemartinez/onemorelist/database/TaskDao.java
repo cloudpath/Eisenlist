@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-package com.josuemartinez.eisenlist.database;
+package com.josuemartinez.onemorelist.database;
 
 
 import androidx.lifecycle.LiveData;

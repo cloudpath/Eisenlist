@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.josuemartinez.eisenlist;
+package com.josuemartinez.onemorelist;
 
 
 import android.content.Intent;
@@ -32,13 +32,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.josuemartinez.eisenlist.database.AppDatabase;
-import com.josuemartinez.eisenlist.database.TaskEntry;
+import com.josuemartinez.onemorelist.database.AppDatabase;
+import com.josuemartinez.onemorelist.database.TaskEntry;
 
 import java.util.List;
 
 import static android.widget.LinearLayout.VERTICAL;
-import static com.josuemartinez.eisenlist.R.id.recyclerViewTasks;
+import static com.josuemartinez.onemorelist.R.id.recyclerViewTasks;
 
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
