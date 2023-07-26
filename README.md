@@ -12,11 +12,11 @@ To-do list app based on the Eisenhower method with specific tasks to increase yo
 - Timber: A logger with a small, extensible API.
 
 <p align="center">
-<img src="/previews/ScreenshotHome.png" width="380"/>
+<img src="/preview/ScreenshotHome.png" width="380"/>
 </p>
 
 <p align="center">
-<img src="/previews/ScreenshotNewTask.png" width="380"/>
+<img src="/preview/ScreenshotNewTask.png" width="380"/>
 </p>
 
 # License
