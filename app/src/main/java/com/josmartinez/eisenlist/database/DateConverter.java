@@ -20,30 +20,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josuemartinez.onemorelist;
 
-import android.app.Application;
+package com.josmartinez.eisenlist.database;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
-import com.josuemartinez.onemorelist.database.AppDatabase;
-import com.josuemartinez.onemorelist.database.TaskEntry;
+import androidx.room.TypeConverter;
 
-import java.util.List;
+import java.util.Date;
 
-public class MainViewModel extends AndroidViewModel {
+public class DateConverter {
 
-    private final LiveData<List<TaskEntry>> tasks;
-
-    public MainViewModel(@NonNull Application application) {
-        super(application);
-        AppDatabase database = AppDatabase.getInstance(this.getApplication());
-        tasks = database.taskDao().loadAllTasks();
+    @TypeConverter
+    public static Date toDate(Long timestamp) {
+        return timestamp == null ? null : new Date(timestamp);
     }
 
-    public LiveData<List<TaskEntry>> getTasks() {
-        return tasks;
+    @TypeConverter
+    public static Long toTimestamp(Date date) {
+        return date == null ? null : date.getTime();
     }
 }

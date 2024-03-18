@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-package com.josuemartinez.onemorelist.database;
+package com.josmartinez.eisenlist.database;
 
 
 import androidx.room.ColumnInfo;

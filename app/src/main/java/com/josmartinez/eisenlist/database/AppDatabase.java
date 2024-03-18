@@ -20,25 +20,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josuemartinez.onemorelist;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
+package com.josmartinez.eisenlist.database;
 
-import com.josuemartinez.onemorelist.database.AppDatabase;
-import com.josuemartinez.onemorelist.database.TaskEntry;
 
-public class AddTasksViewModel extends ViewModel {
+import android.content.Context;
 
-    private final LiveData<TaskEntry> task;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
-    public AddTasksViewModel(AppDatabase database, int taskId) {
-        task = database.taskDao().loadTaskById(taskId);
+@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
+@TypeConverters(DateConverter.class)
+public abstract class AppDatabase extends RoomDatabase {
+
+    private static final Object LOCK = new Object();
+    private static final String DATABASE_NAME = "todolist";
+    private static AppDatabase sInstance;
+
+    public static AppDatabase getInstance(Context context) {
+        if (sInstance == null) {
+            synchronized (LOCK) {
+                sInstance = Room.databaseBuilder(
+                        context.getApplicationContext(),
+                        AppDatabase.class,
+                        AppDatabase.DATABASE_NAME)
+                        .build();
+            }
+        }
+        return sInstance;
     }
 
-    public LiveData<TaskEntry> getTask() {
-        return task;
-    }
-
-
+    public abstract TaskDao taskDao();
 }

@@ -20,35 +20,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.josuemartinez.onemorelist.database;
-
+package com.josmartinez.eisenlist;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
-import androidx.room.Update;
+import androidx.lifecycle.ViewModel;
 
-import java.util.List;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
-@Dao
-public interface TaskDao {
+public class AddTasksViewModel extends ViewModel {
 
-    @Query("SELECT * FROM task ORDER BY priority")
-    LiveData<List<TaskEntry>> loadAllTasks();
+    private final LiveData<TaskEntry> task;
 
-    @Insert
-    void insertTask(TaskEntry taskEntry);
+    public AddTasksViewModel(AppDatabase database, int taskId) {
+        task = database.taskDao().loadTaskById(taskId);
+    }
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    void updateTask(TaskEntry taskEntry);
+    public LiveData<TaskEntry> getTask() {
+        return task;
+    }
 
-    @Delete
-    void deleteTask(TaskEntry taskEntry);
 
-    @Query("SELECT * FROM task WHERE id = :id")
-    LiveData<TaskEntry> loadTaskById(int id);
 }

@@ -21,36 +21,34 @@
  * SOFTWARE.
  */
 
-package com.josuemartinez.onemorelist.database;
+package com.josmartinez.eisenlist.database;
 
 
-import android.content.Context;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Update;
 
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
+import java.util.List;
 
-@Database(entities = {TaskEntry.class}, version = 1, exportSchema = false)
-@TypeConverters(DateConverter.class)
-public abstract class AppDatabase extends RoomDatabase {
+@Dao
+public interface TaskDao {
 
-    private static final Object LOCK = new Object();
-    private static final String DATABASE_NAME = "todolist";
-    private static AppDatabase sInstance;
+    @Query("SELECT * FROM task ORDER BY priority")
+    LiveData<List<TaskEntry>> loadAllTasks();
 
-    public static AppDatabase getInstance(Context context) {
-        if (sInstance == null) {
-            synchronized (LOCK) {
-                sInstance = Room.databaseBuilder(
-                        context.getApplicationContext(),
-                        AppDatabase.class,
-                        AppDatabase.DATABASE_NAME)
-                        .build();
-            }
-        }
-        return sInstance;
-    }
+    @Insert
+    void insertTask(TaskEntry taskEntry);
 
-    public abstract TaskDao taskDao();
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    void updateTask(TaskEntry taskEntry);
+
+    @Delete
+    void deleteTask(TaskEntry taskEntry);
+
+    @Query("SELECT * FROM task WHERE id = :id")
+    LiveData<TaskEntry> loadTaskById(int id);
 }

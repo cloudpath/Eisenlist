@@ -20,14 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.josuemartinez.onemorelist;
+package com.josmartinez.eisenlist;
 
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.josuemartinez.onemorelist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.AppDatabase;
 
 public class AddTasksViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 

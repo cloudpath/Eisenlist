@@ -1,21 +1,7 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.josmartinez.eisenlist;
 
-package com.josuemartinez.onemorelist;
 
+import static android.widget.LinearLayout.VERTICAL;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,13 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.josuemartinez.onemorelist.database.AppDatabase;
-import com.josuemartinez.onemorelist.database.TaskEntry;
+import com.josmartinez.eisenlist.database.AppDatabase;
+import com.josmartinez.eisenlist.database.TaskEntry;
 
 import java.util.List;
-
-import static android.widget.LinearLayout.VERTICAL;
-import static com.josuemartinez.onemorelist.R.id.recyclerViewTasks;
 
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
@@ -53,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
 
         // Set the RecyclerView to its corresponding view
         // Member variables for the adapter and RecyclerView
-        RecyclerView mRecyclerView = findViewById(recyclerViewTasks);
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerViewTasks);
 
         // Set the layout for the RecyclerView to be a linear layout
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -83,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                 AppExecutors.getInstance().diskIO().execute(new Runnable() {
                     @Override
                     public void run() {
-                        int position = viewHolder.getAdapterPosition();
+                        int position = viewHolder.getBindingAdapterPosition();
                         List<TaskEntry> tasks = mAdapter.getTasks();
                         mDb.taskDao().deleteTask(tasks.get(position));
                     }
